@@ -1,10 +1,118 @@
-# SpringMicroServiceDockerkubernetes
-Sample learning project springboot Docker and kubernetes
+Spring boot microservice application
+Example Spring boot microservice application which consumes another microservice - https://github.com/Govindaraju777/SpringMicroServiceDockerkubernetes/tree/EmployeeService
 
-Introduction to springBoot Microservice : https://www.youtube.com/watch?v=y8IQb4ofjDo&list=PLqq-6Pq4lTTZSKAFG6aCDVDP86Qx4lNas
-Introduction to Docker : https://www.youtube.com/watch?v=rmf04ylI2K0
-DevOps & Kubernetes improves developer productivity :
-      https://www.techgig.com/webinar/DevOps-Kubernetes-improves-developer-productivity-1525?utm_source=TG_batch&utm_medium=email&utm_campaign=webinar_2019-06-05&&auto_login=Zzc3MEFhS2RZRVhIKzRJbVdxT2hhQXFzZW02dXUxY2JwdVJvV0xMVnVvUVFhWE1LTml6MnVYZ3hPRmtyb0xJQXpkZHBOMUZFSzB4b2FISUVmaVhqcVE9PQ==&etoken=Zzc3MEFhS2RZRVhIKzRJbVdxT2hhRmNBbkF6UjFVQ0Rhc2NUK3lMaVVsND0=&activity_name=NTA2Nzk0&template_type=0&link_src=VWZEQ0NwOTYrOGc2NHQvcHFaK3Qzdz09&src_type=autoLogin
-      
+Pom.xml
 
-https://aws.amazon.com/blogs/compute/deploying-java-microservices-on-amazon-ec2-container-service/
+<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<!-- <version>1.5.2.RELEASE</version> -->
+		<version>2.1.8.RELEASE</version>
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.example.microservice</groupId>
+	<artifactId>employee-consumer</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>employee-consumer</name>
+	<description>Demo project for Spring Boot</description>
+
+	<properties>
+		<java.version>1.8</java.version>
+		<spring-boot-admin.version>2.1.5</spring-boot-admin.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		
+		 
+	</dependencies>
+
+
+
+<br>
+
+
+package com.example.microservice;
+
+import java.io.IOException;
+
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.web.client.RestClientException;
+
+@SpringBootApplication
+//@EnableDiscoveryClient
+//@EnableEurekaClient
+public class EmployeeConsumerApplication implements CommandLineRunner {
+
+	public static void main(String[] args) throws RestClientException, IOException {
+		ApplicationContext ctx;
+		ctx = SpringApplication.run(EmployeeConsumerApplication.class, args);
+	}
+
+
+	@Override
+	public void run(String... args) throws Exception {
+
+	}
+}
+
+
+<br>
+
+
+package com.example.microservice.controller;
+
+import java.io.IOException;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestClientException;
+import org.springframework.web.client.RestTemplate;
+
+
+@RestController
+public class ConsumerControllerClient {
+
+	@Autowired
+	private RestTemplate restTemplate;
+	
+	
+	@GetMapping("/testMicroserviceRestClient")
+	public ResponseEntity<String> getEmployee() throws RestClientException, IOException {
+
+		String baseUrl = "http://localhost:8081/employee";
+		ResponseEntity<String> response = null;
+
+		try {
+			response = restTemplate.exchange(baseUrl, HttpMethod.GET, getHeaders(), String.class);
+			//response = restTemplate.getForObject("http://employee-service//api/v1/employees/employee",String.class);
+			//response = restTemplate.getForObject("http://EMPLOYEE-SERVICE/employee", String.class);
+		} catch (Exception ex) {
+			System.out.println(ex);
+		}
+		System.out.println("-------------------------------------"+response);
+		return response;
+	}
+
+	private static HttpEntity<?> getHeaders() throws IOException {
+		HttpHeaders headers = new HttpHeaders();
+		headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
+		return new HttpEntity<>(headers);
+	}
+}
+
+
+
+
