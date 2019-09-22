@@ -1,0 +1,31 @@
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://localhost:8090/eureka
+logging:
+  level:
+    com:
+      example: ERROR
+    org:
+      springframework: ERROR
+server:
+  port: 8081
+spring:
+  application:
+    name: employee-service
+#  boot:
+#    admin:
+#      client:
+#        url: http://localhost:8090/admin
+  
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: "*"
+
+#  endpoint:
+#    shutdown:
+#      enabled: true
+ 
+  #health,info,beans,env,myendpoint,
