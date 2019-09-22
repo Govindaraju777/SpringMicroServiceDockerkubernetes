@@ -1,0 +1,14 @@
+server:
+  port: 8090
+spring:
+  application:
+    name: eureka-server
+  boot:
+    admin:
+      context-path: /admin
+eureka:
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+
+    
