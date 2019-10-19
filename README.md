@@ -26,5 +26,8 @@ cent os Virtual box:
     3)    nmtui
 Ip add
 
-
+Docker:
 https://docs.docker.com/install/linux/docker-ce/centos/
+docker-compose
+https://docs.docker.com/compose/install/
+
