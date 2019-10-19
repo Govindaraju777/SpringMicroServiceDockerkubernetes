@@ -8,3 +8,20 @@ DevOps & Kubernetes improves developer productivity :
       
 
 https://aws.amazon.com/blogs/compute/deploying-java-microservices-on-amazon-ec2-container-service/
+
+
+cent os Virtual box:
+1) install oracle virtual box
+2) create centos (lignt 900 mb)
+      create adapters
+      - NAT
+       - bridge adapter
+       - Host only
+ centos commands:
+ 
+ Nmcli c up enp0s3
+	1) Disable firewall
+	2) systemctl stop firewalld
+	3) nmcli c up enp0s3
+    3)    nmtui
+Ip add
