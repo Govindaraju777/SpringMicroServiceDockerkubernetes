@@ -25,3 +25,6 @@ cent os Virtual box:
 	3) nmcli c up enp0s3
     3)    nmtui
 Ip add
+
+
+https://docs.docker.com/install/linux/docker-ce/centos/
