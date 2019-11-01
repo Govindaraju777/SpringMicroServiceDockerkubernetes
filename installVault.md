@@ -17,7 +17,7 @@
  ### background process
   https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/start-process?view=powershell-6
   
-  D:\Govindaraju\programs\vault_1.2.3_windows_amd64> Start-Process -FilePath "vault.exe" -ArgumentList "server -dev"
+  D:\Govindaraju\programs\vault_1.2.3_windows_amd64> Start-Process -FilePath "vault.exe" -ArgumentList "server -dev" -Wait -WindowStyle Minimized
   
     
     
