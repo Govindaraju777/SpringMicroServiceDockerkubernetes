@@ -99,7 +99,17 @@ D:\Govindaraju\programs\mongoData\data1 , D:\Govindaraju\programs\mongoData\data
 
 	mongod  --port 28018 --dbpath "D:\Govindaraju\programs\mongoData\data3" --serviceName "mongoservice3"  --serviceDisplayName "mongoservice3"  --replSet rs0 --logpath "D:\Govindaraju\programs\mongoData\log3\log.txt"  --remove
 
- 
+
+
+## spring boot mongo config
+spring:
+  data:
+    mongodb:
+      #uri: "mongodb://localhost:28017,localhost:28018,localhost:28019/dev-tenant?replicaSet=rs0"
+      #uri: "mongodb://root:root@localhost:28017,localhost:28018,localhost:28019/dev-tenant?replicaSet=rs0"
+
+
+
  
 https://www.mkyong.com/mongodb/how-to-run-mongodb-as-windows-service/
 https://stackoverflow.com/questions/2404742/how-to-install-mongodb-on-windows
