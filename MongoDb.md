@@ -1,17 +1,19 @@
-Mongo Db replica set setup in windows 10:
+# Mongo Db replica set setup in windows 10:
 
-1) Download Windows .zip from :
+
+
+### 1) Download Windows .zip from :
 
 https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2012plus-4.2.1.zip
  
-2)  set MONGO_HOME and PATH=%MONGO_HOME%\bin
+### 2)  set MONGO_HOME and PATH=%MONGO_HOME%\bin
  
  
-3)
+#### 3)
 Start mongodb after creating data directories:
 D:\Govindaraju\programs\mongoData\data1 , D:\Govindaraju\programs\mongoData\data2 ,D:\Govindaraju\programs\mongoData\data2
 
----------------foreground process 
+#### ---------------foreground process 
 -- Open powershell as Administroator
 mongod --port 28017 --dbpath "D:\Govindaraju\programs\mongoData\data1" --replSet rs0
 mongod --port 28018 --dbpath "D:\Govindaraju\programs\mongoData\data2" --replSet rs0
