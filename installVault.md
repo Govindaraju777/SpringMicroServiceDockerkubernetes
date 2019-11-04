@@ -19,7 +19,23 @@
   
   D:\Govindaraju\programs\vault_1.2.3_windows_amd64> Start-Process -FilePath "vault.exe" -ArgumentList "server -dev" -Wait -WindowStyle Minimized
   
+  
+#bootstrap.yml
     
     
+myapp:
+  test:
+    mongodb:
+      urls: "localhost:28017,localhost:28018,localhost:28019"
+      replicaSet: "rs0"
+      dbName: "dev-tenant"
+      user: "root"
+      password: "root"
     
   
+application.yml
+
+ data:
+    mongodb:
+      #uri: "mongodb://root:root@localhost:28017,localhost:28018,localhost:28019/dev-tenant?replicaSet=rs0"
+      uri: mongodb://${bitsy.consents.mongdb.user}:${bitsy.consents.mongdb.password}@${bitsy.consents.mongodb.urls}/${bitsy.consents.mongodb.dbName}?replicaSet=${bitsy.consents.mongodb.replicaSet}
