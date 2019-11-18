@@ -1,3 +1,7 @@
+Pre requisites:
+Install JDK 11
+Set JAVA_HOME to Jdk 11.
+
 
   1) Elastic search https://www.elastic.co/downloads/elasticsearch
     - Unzip 
