@@ -190,4 +190,20 @@ Set JAVA_HOME to Jdk 11.
  
  
  
+ 
+ ### create windows service for ELK 
+	Open windows power shell as admin:
 
+ 		> $env:JAVA_HOME='C:\Program Files\Java\jdk-11.0.5
+
+		> sc.exe create "elasticsearch" displayName="elast
+icsearch"  binPath="C:\Users\govindarajuv\Downloads\ELK\elasticsearch-7.4.2\bin\elasticsearch.bat"
+
+	> sc.exe create "kibana" displayName="kibana"  bin
+	Path="C:\Users\govindarajuv\Downloads\ELK\kibana-7.4.0-windows-x86_64\bin\kibana.bat"
+
+ 
+### start / stop service
+
+	> Start-Service elasticsearch 
+	> Start-service kibana
