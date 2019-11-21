@@ -121,6 +121,12 @@ To run as docker ?
 http://www.tugberkugurlu.com/archive/setting-up-a-mongodb-replica-set-with-docker-and-connecting-to-it-with-a--net-core-app
 
 
+## Single instance without replicaset
+	> mongod  --port 27017  --dbpath "D:\mongoData2701
+	7\data"  --serviceName "mongoservice27017"  --serviceDisplayName "mongoservice27017"  --logpath "D:\mongoData27017\log\l
+	og.txt"  --install
 
-
+	> netstart mongoservice27017
+	
+	
 
