@@ -198,8 +198,7 @@ Set JAVA_HOME to Jdk 11.
 
 		> sc.exe create "elasticsearch" displayName="elasticsearch"  binPath="C:\Users\govindarajuv\Downloads\ELK\elasticsearch-7.4.2\bin\elasticsearch.bat"
 
-	> sc.exe create "kibana" displayName="kibana"  bin
-	Path="C:\Users\govindarajuv\Downloads\ELK\kibana-7.4.0-windows-x86_64\bin\kibana.bat"
+	> sc.exe create "kibana" displayName="kibana"  bin Path="C:\Users\govindarajuv\Downloads\ELK\kibana-7.4.0-windows-x86_64\bin\kibana.bat"
 
  
 ### start / stop service
