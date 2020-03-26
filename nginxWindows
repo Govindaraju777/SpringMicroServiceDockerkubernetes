@@ -1,0 +1,14 @@
+Download : http://nginx.org/en/docs/windows.html
+
+Start : double click on nginx.exe
+
+#stop
+C:\Users\govindarajuv\Downloads\nginx-1.17.9\nginx-1.17.9> taskkill /f /IM nginx.exe
+
+
+#liststat
+PS C:\Users\govindarajuv\Downloads\nginx-1.17.9\nginx-1.17.9> netstat -n -a -o | findstr "0.0.0.0:80"
+  TCP    0.0.0.0:80             0.0.0.0:0              LISTENING       29012
+  TCP    0.0.0.0:8020           0.0.0.0:0              LISTENING       14552
+  TCP    0.0.0.0:8081           0.0.0.0:0              LISTENING       5272
+  UDP    0.0.0.0:8082           *:*                                    5272
