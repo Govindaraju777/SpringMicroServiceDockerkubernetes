@@ -1,0 +1,93 @@
+https://web.microsoftstream.com/video/f8922711-6a06-4005-94f3-d656c2fb9923
+
+
+
+MySQL latest centos 
+
+
+Community version : mysql-community-common-5.7.30-1.el7.x86_64
+$ wget http://dev.mysql.com/get/mysql57-community-release-el7-8.noarch.rpm
+$ sudo yum localinstall mysql57-community-release-el7-8.noarch.rpm
+$ sudo yum install mysql-community-server 
+
+[root@localhost ~]# sudo grep 'generated' /var/log/mysqld.log
+2020-06-23T13:45:11.344506Z 1 [Note] A temporary password is generated for root@localhost: >*qVGXBpa9ch
+
+
+
+https://dev.mysql.com/downloads/repo/yum/
+[root@localhost mysql]# wget https://repo.mysql.com//mysql80-community-release-el7-3.noarch.rpm
+
+[root@localhost mysql]# rpm -qplp mysql80-community-release-el7-3.noarch.rpm
+
+[root@localhost mysql]# sudo yum install -y mysql-server
+
+sudo systemctl start mysqld[root@localhost ~]# sudo systemctl status mysqld
+
+sudo systemctl start mysqld
+
+
+--------------------------------------------------------------------
+//bypass login & restart mysql 
+[root@localhost etc]# systemctl set-environment MYSQLD_OPTS="--skip-grant-tables"
+[root@localhost etc]# sudo systemctl status mysqld
+[root@localhost etc]# sudo systemctl restatus mysqld
+#Login as root
+mysql -u root 
+--------------------------------------------------------------------
+
+
+--------------------------------------------------------------------
+mysql> SET GLOBAL validate_password_policy=LOW;
+
+//connect to your mysql without password.
+mysql> flush privileges;
+mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY '';
+mysql> flush privileges;
+
+Or 
+[root@localhost ~]# sudo mysql_secure_installation
+
+--------------------------------------------------------------------
+
+--------------------------------------------------------------------
+#revert / enable user login and validation & restart mysql
+
+[root@localhost ~]# systemctl unset-environment MYSQLD_OPTS
+
+-----------------------------------------------------------------------------------------
+
+
+
+------------------------------------------
+//CREATE NEW USER testcarbon
+flush privileges;
+CREATE USER 'testcarbon'@'%' IDENTIFIED BY 'testcarbon';
+--grant all privileges on *.* to testcarbon@localhost identified by 'testcarbon' with grant option;
+GRANT ALL PRIVILEGES ON *.* TO 'testcarbon'@'%';
+
+-------------------------------------------
+
+
+mysql> UPDATE mysql.user SET authentication_string = 'root' WHERE User = 'root' AND Host = 'localhost';
+mysql> FLUSH PRIVILEGES;
+mysql> quit
+
+
+Unset the mySQL envitroment option so it starts normally next time
+systemctl unset-environment MYSQLD_OPTS
+
+
+
+Try to login using your new password:
+mysql -u root -p
+
+
+root@localhost : vi /etc/my.conf
+validate_password_policy=LOW
+
+
+
+mysql> SET GLOBAL validate_password_length = 6; 
+mysql> SET GLOBAL validate_password_number_count = 0; 
+mysql> SET GLOBAL validate_password.policy = LOW;
